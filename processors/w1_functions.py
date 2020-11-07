@@ -1,3 +1,4 @@
+from processors.priority_queue import priority_queue
 
 
 def enqueue(priority_queue, patient):
@@ -21,3 +22,43 @@ def enqueue(priority_queue, patient):
         emergency_list.append(patient_name)
 
     return priority_queue
+
+
+def dequeue(priority_queue):
+    queue_with_pacients = []
+    for items in priority_queue.items():
+        if len(items[1]) > 0:
+            queue_with_pacients.append(items)
+
+    
+    for index in range(len(queue_with_pacients) -1, -1 , -1):
+        priority = queue_with_pacients[index]
+        if priority[0] == 'emergency':
+            pacient = priority[1][0]
+            priority[1].pop(0)
+            priority_queue.update({priority[0]: priority[1]})
+            
+            return (priority_queue, pacient)
+        if priority[0] == 'high_urgency':
+            pacient = priority[1][0]
+            priority[1].pop(0)
+            priority_queue.update({priority[0]: priority[1]})
+            return priority_queue
+        if priority[0] == 'urgency':
+            pacient = priority[1][0]
+            priority[1].pop(0)
+            priority_queue.update({priority[0]: priority[1]})
+            return priority_queue
+        if priority[0] == 'low_urgency':
+            pacient = priority[1][0]
+            priority[1].pop(0)
+            priority_queue.update({priority[0]: priority[1]})
+            return priority_queue
+        if priority[0] == 'no_urgency':
+            pacient = priority[1][0]
+            priority[1].pop(0)
+            priority_queue.update({priority[0]: priority[1]})
+            return priority_queue
+    
+    return None
+

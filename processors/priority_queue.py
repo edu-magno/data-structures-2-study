@@ -3,5 +3,5 @@ priority_queue = {
     "low_urgency": [],
     "urgency": [],
     "high_urgency": [],
-    "emergency": []
+    "emergency": ['Ana', 'Carlos']
 }
